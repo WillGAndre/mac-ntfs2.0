@@ -32,15 +32,11 @@ EOF
 }
 
 check_ntfs_tools() {
-    if ! command -v brew &> /dev/null; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
     brews=$(brew list)
-    if ! echo "$brews" | grep -q macfuse; then
-        brew install --cask macfuse
-    fi
     if ! echo "$brews" | grep -q ntfs-3g; then
-        brew install ntfs-3g
+        brew install --cask macfuse
+        brew tap gromgit/homebrew-fuse
+        brew install ntfs-3g-mac
     fi
     if ! echo "$brews" | grep -q tree; then
         brew install tree

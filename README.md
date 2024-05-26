@@ -18,9 +18,18 @@ Volume XXXX XXXX on XXXX unmounted
 
 Read and write access for `NTFS` / `Microsoft Basic Data` partition types for mac OS.
 
+<u>Requirement:</u> `brew` must be installed on host to run. `System Extensions` must be allowed for developer `Benjamin Fleischer` (<i>i.e.:</i> macFUSE is signed by "Benjamin Fleischer"), host restart is required on first run.
+
+#### Quick-brew:
+<pre>
+brew install --cask macfuse
+brew tap gromgit/homebrew-fuse
+brew install ntfs-3g-mac
+brew install tree
+</pre>
+
 1. Optionally create `env` file with target partition type.
 2. `./ntfs.sh`
 
 ## [Platypus](https://sveinbjorn.org/platypus) Build
-- `brew` must be installed on host to run.
 - `app/env` can be included to specify the partition type to be mounted.

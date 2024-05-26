@@ -40,15 +40,17 @@ EOF
 
 ## Hard-check NTFS tools
 check_ntfs_tools() {
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
     if ! command -v brew &> /dev/null; then
         echo "No brew!"
         exit 1
     fi
-    brew install --cask macfuse
-    brew install ntfs-3g
-    brew install tree
+    if ! command -v ntfs-3g &> /dev/null; then
+        brew install --cask macfuse
+        brew tap gromgit/homebrew-fuse
+        brew install ntfs-3g-mac
+        brew install tree
+    fi
 }
 
 load_env_file
